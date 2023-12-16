@@ -7,3 +7,5 @@ resource "aws_instance" "my_vm" {
  }
 }
 
+data "aws_region" "current" {}
+
