@@ -22,7 +22,16 @@ pipeline {
                 echo dd_ip
                 echo region
                 }
+              }
+            }
+        }
+        stage('Terraform destroy') {
+            steps {
+                script {
+                withCredentials([aws(credentialsId: "AWS-Jenkins-Credentials")]) {
+                sh 'terraform destroy --auto-approve'
                 }
+              }
             }
         }
         
