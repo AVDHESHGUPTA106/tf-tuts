@@ -16,7 +16,7 @@ pipeline {
             steps {
                 withCredentials([aws(credentialsId: "AWS-Jenkins-Credentials")]) {
                 sh 'terraform apply --auto-approve'
-                def dd_ip = sh(returnStdout: true, script: "terraform output public_ip").trim()
+                dd_ip = sh(returnStdout: true, script: "terraform output public_ip").trim()
                 echo dd_ip
                 }
             }
