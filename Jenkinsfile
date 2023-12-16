@@ -20,7 +20,7 @@ pipeline {
                 def dd_ip = sh(returnStdout: true, script: "terraform output public_ip").trim()
                 def region = sh(returnStdout: true, script: "terraform output aws_region").trim()
                 echo dd_ip
-                echo region
+                echo region.id
                 }
                 }
             }
