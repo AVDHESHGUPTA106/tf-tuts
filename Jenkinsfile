@@ -12,10 +12,12 @@ pipeline {
                 sh 'terraform init'
             }
         }
-        stage('Terraform plan') {
+        stage('Terraform apply') {
             steps {
                 withCredentials([aws(credentialsId: "AWS-Jenkins-Credentials")]) {
-                sh 'terraform plan'
+                sh 'terraform apply --auto-approve'
+                def dd_ip = sh(returnStdout: true, script: "terraform output public_ip").trim()
+                echo dd_ip
                 }
             }
         }
