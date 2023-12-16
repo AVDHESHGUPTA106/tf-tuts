@@ -14,7 +14,9 @@ pipeline {
         }
         stage('Terraform plan') {
             steps {
+                withCredentials([aws(credentialsId: "AWS-Jenkins-Credentials")]) {
                 sh 'terraform plan'
+                }
             }
         }
         
